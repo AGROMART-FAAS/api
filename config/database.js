@@ -11,10 +11,14 @@ module.exports = ({ env }) => {
         user: env("DATABASE_USERNAME", "agromart"),
         password: env("DATABASE_PASSWORD", "agromartpass"),
         schema: env("DATABASE_SCHEMA", "public"),
+        ssl: false,
       },
       pool: {
-        min: env.int("DATABASE_POOL_MIN", 2),
-        max: env.int("DATABASE_POOL_MAX", 10),
+        min: 0,
+        max: 10,
+        acquireTimeoutMillis: 30000,
+        createTimeoutMillis: 30000,
+        idleTimeoutMillis: 10000,
       },
     },
   };

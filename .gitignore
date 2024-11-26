@@ -1,3 +1,4 @@
+
 ############################
 # OS X
 ############################
@@ -65,6 +66,7 @@ $RECYCLE.BIN/
 # Logs and databases
 ############################
 
+data
 .tmp
 *.log
 *.sql
@@ -94,7 +96,7 @@ logs
 results
 node_modules
 .node_history
-
+yarn.lock
 ############################
 # Tests
 ############################
