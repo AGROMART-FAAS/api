@@ -36,10 +36,13 @@ services:
     ports:
       - "1337:1337"
     volumes:
-      - ./:/src/app
+      - .:/src/app
+      - agromart_node_modules:/src/app/node_modules
     depends_on:
       - agromart_db_service
 
 volumes:
   pgdata:
-    driver: local # Volume dedicado ao Postgres
+    driver: local
+  agromart_node_modules:
+    driver: local
