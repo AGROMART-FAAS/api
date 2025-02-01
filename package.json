@@ -23,7 +23,8 @@
     "axios": "^1.4.0",
     "mercadopago": "^1.5.16",
     "paypal-rest-sdk": "^1.8.1",
-    "pg": "^8.9.0"
+    "pg": "^8.13.1",
+    "serverless-http": "^3.2.0"
   },
   "author": {
     "name": "A Strapi developer"
@@ -35,6 +36,8 @@
   "devDependencies": {
     "jest": "^29.5.0",
     "nock": "^13.3.1",
+    "serverless": "^4.5.3",
+    "serverless-offline": "^14.4.0",
     "supertest": "^6.3.3"
   },
   "jest": {
