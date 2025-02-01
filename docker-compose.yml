@@ -12,34 +12,34 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  agromart_strapi_service:
-    container_name: agromart_strapi_container
-    build:
-      context: .
-      dockerfile: Dockerfile.strapi
-    env_file: .env
-    environment:
-      HOST: ${HOST}
-      PORT: ${PORT}
-      APP_KEYS: ${APP_KEYS}
-      API_TOKEN_SALT: ${API_TOKEN_SALT}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      JWT_SECRET: ${JWT_SECRET}
-      DATABASE_HOST: ${DATABASE_HOST}
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      EXPO_ACCESS_TOKEN: ${EXPO_ACCESS_TOKEN}
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_SSL: ${DATABASE_SSL}
-    ports:
-      - "1337:1337"
-    volumes:
-      - .:/src/app
-      - agromart_node_modules:/src/app/node_modules
-    depends_on:
-      - agromart_db_service
+  # agromart_strapi_service:
+  #   container_name: agromart_strapi_container
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.strapi
+  #   env_file: .env
+  #   environment:
+  #     HOST: ${HOST}
+  #     PORT: ${PORT}
+  #     APP_KEYS: ${APP_KEYS}
+  #     API_TOKEN_SALT: ${API_TOKEN_SALT}
+  #     ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+  #     JWT_SECRET: ${JWT_SECRET}
+  #     DATABASE_HOST: ${DATABASE_HOST}
+  #     DATABASE_PORT: ${DATABASE_PORT}
+  #     DATABASE_NAME: ${DATABASE_NAME}
+  #     DATABASE_USERNAME: ${DATABASE_USERNAME}
+  #     DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+  #     EXPO_ACCESS_TOKEN: ${EXPO_ACCESS_TOKEN}
+  #     DATABASE_CLIENT: ${DATABASE_CLIENT}
+  #     DATABASE_SSL: ${DATABASE_SSL}
+  #   ports:
+  #     - "1337:1337"
+  #   volumes:
+  #     - .:/src/app
+  #     - agromart_node_modules:/src/app/node_modules
+  #   depends_on:
+  #     - agromart_db_service
 
 volumes:
   pgdata:
