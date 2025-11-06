@@ -17,13 +17,22 @@ async function setAuthenticatedPermissions(newPermissions, publicRole) {
   await Promise.all(allPermissionsToCreate);
 }
 async function boostrapPermissions(){
-  const authenticatedRole = await strapi
+  /*const authenticatedRole = await strapi
   .query("plugin::users-permissions.role")
   .findOne({
     where: {
       type: "authenticated",
     },
-  });
+  });*/
+
+  //CODIGOS DE TESTE
+  const publicRole = await strapi
+    .query("plugin::users-permissions.role")
+    .findOne({ where: { type: "public" } });
+
+  const defaultRole = await strapi.query('plugin::users-permissions.role').findOne({}, []);
+  //
+
   await setAuthenticatedPermissions({
     'assinante' : ['create','delete','find','findOne','update'],
     'cesta' : ['create','delete','find','findOne','update'],
@@ -34,13 +43,15 @@ async function boostrapPermissions(){
     'notificacao' : ['find'],
     'plano' : ['create','delete','find','findOne','update'],
     'produto-avulso' : ['create','delete','find','findOne','update'],
-  }, authenticatedRole );
+  // }, authenticatedRole ); // COMENTARIO DO CODIGO DE TESTE
+  }, defaultRole ); // 
   // se necessario pegar a const defaultRole = await strapi.query('plugin::users-permissions.role').findOne({}, []);
   
   await strapi.query("plugin::users-permissions.permission").create({
     data: {
       action: `plugin::users-permissions.user.update`,
-      role: authenticatedRole.id,
+      // role: authenticatedRole.id, // COMENTARIO DO CODIGO DE TESTE
+      role: defaultRole.id,
     },
   });
 };
